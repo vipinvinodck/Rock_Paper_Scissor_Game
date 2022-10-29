@@ -1,0 +1,233 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-P-S Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e391ce7786.js" crossorigin="anonymous"></script>
+    <script src="app.js" defer></script>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(https://i.pinimg.com/originals/48/09/2a/48092a026928bd10576536b9326c0c2d.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    font-family: sans-serif;
+    font-weight: 800;
+    margin: 15px 0;
+    color: aliceblue;
+}
+h2{
+    color: aliceblue;
+}
+.container{
+    display: flex;
+}
+.container .section{
+    width: 350px;
+    margin: 20px 50px;
+}
+.section .info{
+    background:transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+.info span , .info h3{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0px 10px;
+    font-family: sans-serif;
+    color: rgb(255, 0, 0);
+}
+.show{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background :none;
+    height: 220px;
+}
+.show i{
+    font-size: 100px;
+    color: orange;
+}
+h2{
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 5px;
+}
+.selection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 100px;
+}
+.selection button{
+    margin: 0 20px;
+    padding: 25px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background :rgb(0, 8, 255);
+    font-size: 33px;
+    color: orange;
+}
+#b1{
+    width: 150px;
+    height: 40px;
+}
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <h1 id="res">Rock Paper Scissors</h1>
+    <h2 id="demo">Try your luck !</h2>
+<!--  The Container  -->
+    <div class="container">
+<!--   The first section     -->
+        <div class="section">
+            <div class="info">
+                <h3>You :</h3><span id="playerScore">0</span>
+            </div>
+            <div  class="show">
+               <img src="https://static.thenounproject.com/png/26020-200.png" alt="" id="showplay" height="200px">
+            </div>
+        </div>
+<!--   The second section     -->
+        <div class="section">
+            <div class="info">
+                <h3>Computer :</h3><span id="computerScore">0</span>
+            </div>
+            <div  class="show computer">
+                <img src="https://static.thenounproject.com/png/5254221-200.png" alt="" id="playcomp" height="200px">
+            </div>
+        </div>
+    </div>
+    <h2 style="color: rgb(233, 33, 19 );  " id="demo">Choose One !</h2>
+<!-- This selection div contains the buttons   -->
+    <div class="selection">  
+        <button onclick="show('0')" class="fas fa-hand-rock" id="rock"></button>
+        <button onclick="show('1')"  class="fas fa-hand-paper" id="paper"></button>
+        <button onclick="show('2')"  class="fas fa-hand-scissors" id="scissors"></button><br><br>
+        
+    </div><BR><BR>
+        <div>
+            <button onclick="reload()" id="B1" type="button" class="btn btn-primary">RESET</button>
+        </div>
+    
+
+        
+
+    <script>
+            var syscount=0;
+            var usercount=0;
+          function show(a){
+            var b= Math.floor(Math.random()*3);
+            if(a==b){
+                // document.getElementById("demo").innerHTML="TIE"
+                if(a==0){
+                    document.getElementById("showplay").src="https://static.thenounproject.com/png/2600289-200.png"
+                    document.getElementById("playcomp").src="https://static.thenounproject.com/png/2600289-200.png"
+
+                }
+                else if(a==1){
+                    document.getElementById("showplay").src="https://clipartix.com/wp-content/uploads/2016/04/Paper-clip-clip-art-free-clipart-images-2-clipartcow-2.png"
+                    document.getElementById("playcomp").src="https://clipartix.com/wp-content/uploads/2016/04/Paper-clip-clip-art-free-clipart-images-2-clipartcow-2.png"
+                }
+               else if(a==2){
+                    document.getElementById("showplay").src="https://static.thenounproject.com/png/5246953-200.png"
+                    document.getElementById("playcomp").src="https://static.thenounproject.com/png/5246953-200.png"
+               }
+                }
+                if(a==0 && b==1){
+                    document.getElementById("showplay").src="https://static.thenounproject.com/png/2600289-200.png"
+                    document.getElementById("playcomp").src="https://clipartix.com/wp-content/uploads/2016/04/Paper-clip-clip-art-free-clipart-images-2-clipartcow-2.png" 
+                    // document.getElementById("demo").innerHTML="SYSTEM WON"
+                    syscount++;
+                    document.getElementById("computerScore").innerHTML=syscount;
+                }
+                else if(a==0 && b==2){
+                    document.getElementById("showplay").src="https://static.thenounproject.com/png/2600289-200.png"
+                    document.getElementById("playcomp").src="https://static.thenounproject.com/png/5246953-200.png"
+                    // document.getElementById("demo").innerHTML="YOU WON"
+                    usercount++;
+                    document.getElementById("playerScore").innerHTML=usercount;
+                }
+                else if(a==1 && b==0){
+                    document.getElementById("showplay").src="https://clipartix.com/wp-content/uploads/2016/04/Paper-clip-clip-art-free-clipart-images-2-clipartcow-2.png"
+                    document.getElementById("playcomp").src="https://static.thenounproject.com/png/2600289-200.png" 
+                    // document.getElementById("demo").innerHTML="YOU WON"
+                    usercount++;
+                    document.getElementById("playerScore").innerHTML=usercount;
+                }
+                else if(a==1 && b==2){
+                    document.getElementById("showplay").src="https://clipartix.com/wp-content/uploads/2016/04/Paper-clip-clip-art-free-clipart-images-2-clipartcow-2.png"
+                    document.getElementById("playcomp").src="https://static.thenounproject.com/png/5246953-200.png" 
+                    // document.getElementById("demo").innerHTML="SYSTEM WON"
+                    syscount++;
+                    document.getElementById("computerScore").innerHTML=syscount;
+                }
+                else if(a==2 && b==0){
+                    document.getElementById("showplay").src="https://static.thenounproject.com/png/5246953-200.png"
+                    document.getElementById("playcomp").src="https://static.thenounproject.com/png/2600289-200.png" 
+                    // document.getElementById("demo").innerHTML="SYSTEM WON"
+                    syscount++;
+                    document.getElementById("computerScore").innerHTML=syscount;
+                }
+
+                else if(a==2 && b==1){
+                    document.getElementById("showplay").src="https://static.thenounproject.com/png/5246953-200.png"
+                    document.getElementById("playcomp").src="https://clipartix.com/wp-content/uploads/2016/04/Paper-clip-clip-art-free-clipart-images-2-clipartcow-2.png" 
+                    // document.getElementById("demo").innerHTML="YOU WON"
+                    usercount++;
+                    document.getElementById("playerScore").innerHTML=usercount;
+                }
+                if(usercount==5){
+                   
+                    document.getElementById("res").innerHTML="YOU WON"
+                    setTimeout(reload,5000)
+                    var button1= document.getElementById("rock")
+                    // console.log(button1)
+                    button1.disabled =true;
+                    var button2 =document.getElementById("paper")
+                    button2.disabled=true;
+                    var button3 =document.getElementById("scissors")
+                    button3.disabled=true;
+                }
+                else if(syscount==5){
+                  
+                    document.getElementById("res").innerHTML="SYSTEM WON"
+                    setTimeout(reload,5000)  
+                    var button4= document.getElementById("rock")
+                    button4.disabled=true;
+                    var button5 =document.getElementById("paper") 
+                    button5.disabled=true;
+                    var button6 =document.getElementById("scissors")
+                    button6.disabled=true;                                                        
+                }
+                
+            }
+            function reload(){
+                location.reload();
+            }
+            
+          
+    </script>
+</body>
+</html>
